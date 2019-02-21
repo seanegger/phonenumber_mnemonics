@@ -11,7 +11,33 @@ import Foundation
 // possible letters that could be in place of that character
 // For instance, 234 becomes [["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]]
 public func letters(for phoneNumber: String) -> [[String]] {
-    // YOU FILL IN HERE
+    let charArray = Array(phoneNumber).map { (numberChar: Character) -> [String] in
+        if (numberChar == "2"){
+            return ["A", "B", "C"]
+        }
+        if (numberChar == "3"){
+            return ["D", "E", "F"]
+        }
+        if (numberChar == "4"){
+            return ["G", "H", "I"]
+        }
+        if (numberChar == "5"){
+            return ["J", "K", "L"]
+        }
+        if (numberChar == "6"){
+            return ["M", "N", "O"]
+        }
+        if (numberChar == "7"){
+            return ["P", "Q", "R"]
+        }
+        if (numberChar == "8"){
+            return ["S", "T", "U"]
+        }
+        if (numberChar == "9"){
+            return ["W", "X", "Y", "Z"]
+        }
+    }
+    return charArray
 }
 
 // Finds all of the ordered permutations of a given
@@ -22,6 +48,7 @@ public func letters(for phoneNumber: String) -> [[String]] {
 // ["acd", "ace" "bcd", "bce"]
 public func permutations(of arrays: [[String]]) -> [String] {
     // YOU FILL IN HERE
+    arrays.reduce(){ ()}
 }
 
 // Finds all of the possible strings of characters that a phone number
