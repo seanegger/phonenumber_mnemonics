@@ -7,3 +7,6 @@ Run the program by executing `swift run` from the current directory.
 ## Testing
 Test the program by executing `swift test` from this directory. 
 Note that depending on your implementation, one of the tests may take almost a minute to complete.
+
+## Authors
+Sean Egger & Tyler Brabant
