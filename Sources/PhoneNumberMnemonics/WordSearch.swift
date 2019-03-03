@@ -46,6 +46,7 @@ public func letters(for phoneNumber: String) -> [[String]] {
 // array with each choice in the next array, and so on to produce strings
 // For instance permuations(of: [["a", "b"], ["c"], ["d", "e"]]) will return
 // ["acd", "ace" "bcd", "bce"]
+// SOURCE: https://codereview.stackexchange.com/questions/111758/generating-phone-words-in-swift
 public func permutations(of arrays: [[String]]) -> [String] {
     // YOU FILL IN HERE
     guard let prefixes = arrays.first else { return [] } 
