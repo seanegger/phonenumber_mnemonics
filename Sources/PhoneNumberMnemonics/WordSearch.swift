@@ -48,7 +48,13 @@ public func letters(for phoneNumber: String) -> [[String]] {
 // ["acd", "ace" "bcd", "bce"]
 public func permutations(of arrays: [[String]]) -> [String] {
     // YOU FILL IN HERE
-    arrays.reduce(){ ()}
+    guard let prefixes = arrays.first else { return [] } 
+    if (arrays.count <= 1){
+        return prefixes
+    }
+    let lettersToAdd = perm(Array(arrays.dropFirst(1))) // Reduces until there is one element left
+    return prefixes.flatMap { letter in lettersToAdd.map {s in letter + s}} // dds them to each section mapping them to the new string
+
 }
 
 // Finds all of the possible strings of characters that a phone number
