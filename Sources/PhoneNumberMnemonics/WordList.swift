@@ -18,5 +18,9 @@ struct importQuery {
         print("Something went wrong. File not found")
         fileFound = false
     }
-    
+
+    public func minLength(_ minLength: Int) -> [String]{
+        return words.filter {$0.count > minLength}
+    }
+
 }
