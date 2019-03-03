@@ -36,6 +36,7 @@ public func letters(for phoneNumber: String) -> [[String]] {
         if (numberChar == "9"){
             return ["W", "X", "Y", "Z"]
         }
+        return []
     }
     return charArray
 }
@@ -63,6 +64,8 @@ public func permutations(of arrays: [[String]]) -> [String] {
 // Uses letters(for:) and permutations(of:) to do this
 public func possibles(for phoneNumber: String) -> [String] {
     // YOU FILL IN HERE
+    let possiblePerms = letters(for: phoneNumber)
+    return permuations(of: possiblePerms)
 }
 
 // Returns all of the words in a given *string* from the wordlist.txt file
