@@ -54,7 +54,7 @@ public func permutations(of arrays: [[String]]) -> [String] {
     if (arrays.count <= 1){
         return prefixes
     }
-    let lettersToAdd = permuations(of: Array(arrays.dropFirst(1))) // Reduces until there is one element left
+    let lettersToAdd = permtuations(of: Array(arrays.dropFirst(1))) // Reduces until there is one element left
     return prefixes.flatMap { letter in lettersToAdd.map {s in letter + s}} // dds them to each section mapping them to the new string
 
 }
@@ -65,7 +65,7 @@ public func permutations(of arrays: [[String]]) -> [String] {
 public func possibles(for phoneNumber: String) -> [String] {
     // YOU FILL IN HERE
     let possiblePerms = letters(for: phoneNumber)
-    return permutations(of: possiblePerms)
+    return permutations(of: possiblePerms).map { $0.lowercased() }
 }
 
 // Returns all of the words in a given *string* from the wordlist.txt file
@@ -73,7 +73,12 @@ public func possibles(for phoneNumber: String) -> [String] {
 public func wordsInString(_ string: String, ofMinLength length: UInt) -> [String] {
     // YOU FILL IN HERE
     let wordList = importQuery()
-    return wordlist.minLength(length).filter{ $0.contains(string)}
+    return wordlist.minLength(length).map { (word: String) -> String in
+        if (string.contains(word)){
+            return string
+        }
+        return ""
+    }
 
 }
 
@@ -81,7 +86,12 @@ public func wordsInString(_ string: String, ofMinLength length: UInt) -> [String
 // can potentially represent that contain words in words.txt
 // greater than or equal to ofMinLength characters
 public func possiblesWithWholeWords(ofMinLength length: UInt, for phoneNumber: String) -> [String] {
-    // YOU FILL IN HERE
+    let perms = possibles(for: phoneNumber)
+    //print(perms)
+    let possibleWords = perms.flatMap { (perm: String) -> [String] in
+        return wordsInString(perm, ofMinLength: length)
+    }
+    return possibleWords.filter {$0 != ""}
 }
 
 // Returns the phone number mnemonics that have the most words present in words.txt
