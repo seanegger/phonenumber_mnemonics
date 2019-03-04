@@ -54,7 +54,7 @@ public func permutations(of arrays: [[String]]) -> [String] {
     if (arrays.count <= 1){
         return prefixes
     }
-    let lettersToAdd = perm(Array(arrays.dropFirst(1))) // Reduces until there is one element left
+    let lettersToAdd = permuations(of: Array(arrays.dropFirst(1))) // Reduces until there is one element left
     return prefixes.flatMap { letter in lettersToAdd.map {s in letter + s}} // dds them to each section mapping them to the new string
 
 }
@@ -65,7 +65,7 @@ public func permutations(of arrays: [[String]]) -> [String] {
 public func possibles(for phoneNumber: String) -> [String] {
     // YOU FILL IN HERE
     let possiblePerms = letters(for: phoneNumber)
-    return permuations(of: possiblePerms)
+    return permutations(of: possiblePerms)
 }
 
 // Returns all of the words in a given *string* from the wordlist.txt file
@@ -73,7 +73,7 @@ public func possibles(for phoneNumber: String) -> [String] {
 public func wordsInString(_ string: String, ofMinLength length: UInt) -> [String] {
     // YOU FILL IN HERE
     let wordList = importQuery()
-    return wordlist.minLength(ofMinLength).filter{ $0.contains(string)}
+    return wordlist.minLength(length).filter{ $0.contains(string)}
 
 }
 
