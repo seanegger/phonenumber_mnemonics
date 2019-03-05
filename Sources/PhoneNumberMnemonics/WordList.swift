@@ -8,19 +8,36 @@ import Foundation
 // words.txt. It's up to you how you do this. You may consider a struct.
 
 struct importQuery {
-    var fileFound = false
-    let filename = "../../words.txt"
-    do{
-        let words = try String(contentsOfFile: filename).components(separatedBy: .newlines)
-        fileFound = true
+    let words: [String]
+    init() {
+        do{
+           self.words = try String(contentsOfFile: "/home/ty/Documents/phonenum/phonenumber_mnemonics/words.txt").components(separatedBy: .newlines).map { $0.lowercased() }
+           //print("file found")
+           //print(self.words)
+        }
+        
+        catch{
+            print("Error in finding file")
+            self.words = [""]
+        }
     }
-    catch{
-        print("Something went wrong. File not found")
-        fileFound = false
-    }
+        /*
+    init(){
+        self.filename = 
+        do{
+            
+            self.fileFound = true
+        }
+        catch{
+            print("Something went wrong. File not found")
+            self.fileFound = false 
+        }
 
-    public func minLength(_ minLength: Int) -> [String]{
-        return words.filter {$0.count > minLength}
+    }
+    */
+
+    public func minLength(_ minLength: UInt) -> [String]{
+        return self.words.filter {$0.count > minLength}
     }
 
 }

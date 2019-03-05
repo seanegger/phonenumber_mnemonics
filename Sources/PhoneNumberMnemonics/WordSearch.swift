@@ -54,7 +54,7 @@ public func permutations(of arrays: [[String]]) -> [String] {
     if (arrays.count <= 1){
         return prefixes
     }
-    let lettersToAdd = permtuations(of: Array(arrays.dropFirst(1))) // Reduces until there is one element left
+    let lettersToAdd = permutations(of: Array(arrays.dropFirst(1))) // Reduces until there is one element left
     return prefixes.flatMap { letter in lettersToAdd.map {s in letter + s}} // dds them to each section mapping them to the new string
 
 }
@@ -72,8 +72,9 @@ public func possibles(for phoneNumber: String) -> [String] {
 // using only words in the word list of minimum length ofMinLength
 public func wordsInString(_ string: String, ofMinLength length: UInt) -> [String] {
     // YOU FILL IN HERE
+    
     let wordList = importQuery()
-    return wordlist.minLength(length).map { (word: String) -> String in
+    return wordList.minLength(length).map { (word: String) -> String in
         if (string.contains(word)){
             return string
         }
@@ -91,6 +92,7 @@ public func possiblesWithWholeWords(ofMinLength length: UInt, for phoneNumber: S
     let possibleWords = perms.flatMap { (perm: String) -> [String] in
         return wordsInString(perm, ofMinLength: length)
     }
+    //print(perms)
     return possibleWords.filter {$0 != ""}
 }
 
@@ -101,10 +103,13 @@ public func possiblesWithWholeWords(ofMinLength length: UInt, for phoneNumber: S
 // that contain more than three words
 public func mostWords(for phoneNumber: String) -> [String] {
     // YOU FILL IN HERE
+    return [""]
+
 }
 
 // Returns the phone number mnemonics with the longest words from words.txt
 // If more than one word is tied for the longest, returns all of them
 public func longestWords(for phoneNumber: String) -> [String] {
     // YOU FILL IN HERE
+    return [""]
 }
