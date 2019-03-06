@@ -85,7 +85,7 @@ public func wordsInString(_ string: String, ofMinLength length: UInt) -> [String
 // greater than or equal to ofMinLength characters
 public func possiblesWithWholeWords(ofMinLength length: UInt, for phoneNumber: String) -> [String] {
     // filter the permutations where there is atleast one word from the text file in the string.
-    return possibles(for: phoneNumber).filter( {wordsInString($0, ofMinLength: 0).count > 0} )
+    return possibles(for: phoneNumber).filter( {wordsInString($0, ofMinLength: 1).count > 0} )
 }
 
 // Returns the phone number mnemonics that have the most words present in words.txt
@@ -95,19 +95,19 @@ public func possiblesWithWholeWords(ofMinLength length: UInt, for phoneNumber: S
 // that contain more than three words
 public func mostWords(for phoneNumber: String) -> [String] {
     // Get all possible strings of characters that contain words that a phone number can represent
-    let possibles = possiblesWithWholeWords(ofMinLength: 0, for: phoneNumber)
+    let possibles = possiblesWithWholeWords(ofMinLength: 1, for: phoneNumber)
     // Get the most words found in any of these strings
-    let mostWords = possibles.map({wordsInString($0, ofMinLength: 0).count}).max()
+    let mostWords = possibles.map({wordsInString($0, ofMinLength: 1).count}).max()
     // Filter out strings that contain less words than that
-    return possibles.filter({ wordsInString($0, ofMinLength: 0).count == mostWords})
+    return possibles.filter({ wordsInString($0, ofMinLength: 1).count == mostWords})
 }
 
 // Returns the phone number mnemonics with the longest words from words.txt
 // If more than one word is tied for the longest, returns all of them
 public func longestWords(for phoneNumber: String) -> [String] {
     // Get all possible strings of characters that contain words that a phone number can represent
-    let possibles = possiblesWithWholeWords(ofMinLength: 0, for: phoneNumber)
+    let possibles = possiblesWithWholeWords(ofMinLength: 1, for: phoneNumber)
     // Take the possibles and mapping them as the longest word that can be found in each possible and then taking the longest words count in that list filter the possibles on the words length where the possible contains a word that is the length of that longest word.
-    return possibles.filter({ possibles.map({ wordsInString($0, ofMinLength: 0).max( by: { $1.count > $0.count })! }).max( by: { $1.count > $0.count })!.count == wordsInString($0, ofMinLength: 0).max( by: { $1.count > $0.count })!.count })
+    return possibles.filter({ possibles.map({ wordsInString($0, ofMinLength: 1).max( by: { $1.count > $0.count })! }).max( by: { $1.count > $0.count })!.count == wordsInString($0, ofMinLength: 1).max( by: { $1.count > $0.count })!.count })
 }
 
