@@ -11,33 +11,17 @@ struct importQuery {
     let words: [String]
     init() {
         do{
-           self.words = try String(contentsOfFile: "/home/ty/Documents/phonenum/phonenumber_mnemonics/words.txt").components(separatedBy: .newlines).map { $0.lowercased() }
-           //print("file found")
-           //print(self.words)
+            // Store contents of text file in words all converted to uppercase
+           self.words = try String(contentsOfFile: "words.txt").components(separatedBy: .newlines).map( { $0.uppercased() } )
         }
-        
         catch{
             print("Error in finding file")
             self.words = [""]
         }
     }
-        /*
-    init(){
-        self.filename = 
-        do{
-            
-            self.fileFound = true
-        }
-        catch{
-            print("Something went wrong. File not found")
-            self.fileFound = false 
-        }
-
-    }
-    */
 
     public func minLength(_ minLength: UInt) -> [String]{
-        return self.words.filter {$0.count > minLength}
+        return self.words.filter {$0.count >= minLength}
     }
 
 }
