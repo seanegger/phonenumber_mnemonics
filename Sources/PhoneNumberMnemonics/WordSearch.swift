@@ -107,7 +107,7 @@ public func mostWords(for phoneNumber: String) -> [String] {
 public func longestWords(for phoneNumber: String) -> [String] {
     // Get all possible strings of characters that contain words that a phone number can represent
     let possibles = possiblesWithWholeWords(ofMinLength: 0, for: phoneNumber)
-    // filter by taking that list then get the longest word from that list then get the length of that word then check if any of the words contained in the value currently being tested is as long as the longest word.
+    // Take the possibles and mapping them as the longest word that can be found in each possible and then taking the longest words count in that list filter the possibles on the words length where the possible contains a word that is the length of that longest word.
     return possibles.filter({ possibles.map({ wordsInString($0, ofMinLength: 0).max( by: { $1.count > $0.count })! }).max( by: { $1.count > $0.count })!.count == wordsInString($0, ofMinLength: 0).max( by: { $1.count > $0.count })!.count })
 }
 
